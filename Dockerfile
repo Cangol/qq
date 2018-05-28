@@ -20,4 +20,4 @@ ENV MOJO_WEBQQ_PWD=3ba2686692af81a34a230c25d2f728ca
 ENV MOJO_WEBQQ_LOGIN_TYPE=login
 
 EXPOSE 5000
-RUN  perl -MMojo::Webqq -e "Mojo::Webqq->new->load('ShowMsg')->load('Openqq',data=>{listen =>[{host=>'0.0.0.0',port=>5000}]})->load('UploadQRcode')->load('SmartReply')->run()"
+CMD perl -MMojo::Webqq -e 'Mojo::Webqq->new(log_encoding=>'utf8')->load('ShowMsg','UploadQRcode')->load('Openqq',data=>{listen =>[port=>5000}]})->run()'
